@@ -17,7 +17,6 @@ class Login extends Component {
     this.props.login({email: this.state.email, password: this.state.password});
   }
   componentDidUpdate(previousProps){
-    console.log(this.props.authentication)
     if(previousProps.authentication.user !== this.props.authentication.user){
       sessionStorage.setItem('user', JSON.stringify(this.props.authentication.user));
     }
