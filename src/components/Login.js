@@ -1,60 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../redux/authentication/actions';
 
-class Login extends Component {
-  constructor(props){
-    super();
-    this.props = props;
-    this.state = {
-      email: '',
-      password: ''
-    }
-    this.loginOnClick = this.loginOnClick.bind(this);
-  }
-  loginOnClick(evt){
-    evt.preventDefault();
-    this.props.login({email: this.state.email, password: this.state.password});
-  }
-  componentDidUpdate(previousProps){
-    if(previousProps.authentication.user !== this.props.authentication.user){
-      sessionStorage.setItem('user', JSON.stringify(this.props.authentication.user));
-    }
-  }
-  render(){
-    return (
+const Login = ({ error, login }) => {
+  let emailInput;
+  let passwordInput
+  return (
       <div>
-        <h1>{this.state.email + ' -- ' + this.state.password}</h1>
-        <div>
-          <form>
-            <input type="text"
-                ref="email"
-                value={this.state.email}
-                onChange={evt => this.setState({ email: evt.target.value })}/>
-            <input ref="password"
-                type="password"
-                value={this.state.password}
-                onChange={evt => this.setState({password: evt.target.value})} />
-            <button onClick={this.loginOnClick}>Login</button>
-          </form>
-        </div>
+          <input
+              type="text"
+              ref={node => { emailInput = node }}/>
+          <input
+              ref={node => { passwordInput = node }}
+              type="password"/>
+          <button onClick={() => login({ email: emailInput.value, password: passwordInput.value })}>Login</button>
+          <h4>{error}</h4>
       </div>
-    )
-  }
+  );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    authentication: state.authentication
-  };
-};
+Login.displayName = 'Login'
+Login.propTypes = {
+  error: PropTypes.string,
+  login: PropTypes.func.isRequired
+}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    login: (credentials) => {
-      dispatch(login(credentials));
-    }
-  };
-};
+const mapStateToProps = ({ authentication }) => ({
+  error: authentication.error
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: credentials => {
+    dispatch(login(credentials));
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,36 +1,30 @@
 import * as types from './types';
 import authenticationService from '../../services/authentication';
 
-export function loginRequest(credentials){
-  return {
-    type: types.LOGIN_REQUEST,
-    credentials
-  }
-};
+export const loginRequest = credentials => ({
+  type: types.LOGIN_REQUEST,
+  credentials
+});
 
-export function loginSuccess(user){
-  return {
-    type: types.LOGIN_SUCCESS,
-    user
-  }
-};
+export const loginSuccess = user => ({
+  type: types.LOGIN_SUCCESS,
+  user
+});
 
-export function loginFailure(error){
-  return {
-    type: types.LOGIN_FAILURE,
-    error
-  }
-};
+export const loginFailure = error => ({
+  type: types.LOGIN_FAILURE,
+  error
+});
 
-export function login(credentials){
-  return (dispatch) => {
-    dispatch(loginRequest());
-    return authenticationService.login(credentials)
-      .then(response => response.json())
-      .then(parsedResponse => {
-          return parsedResponse.statusCode >= 400 ?
-            dispatch(loginFailure(parsedResponse.message)) :
-            dispatch(loginSuccess(parsedResponse));
-        })
-  };
-}
+export const login = credentials => dispatch => {
+  dispatch(loginRequest());
+  return authenticationService.login(credentials)
+    .then(response => response.json())
+    .then((parsedResponse) => {
+      if (parsedResponse.statusCode >= 400) {
+        return dispatch(loginFailure(parsedResponse.message))
+      }
+      dispatch(loginSuccess(parsedResponse));
+      sessionStorage.setItem('user', JSON.stringify(parsedResponse));
+    })
+};
