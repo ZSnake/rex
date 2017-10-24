@@ -4,6 +4,7 @@ import { Redirect } from 'react-router'
 import { connect } from 'react-redux';
 import { login } from '../redux/authentication/actions';
 import fullLogo from '../imgs/THK-Dark.png';
+import classNames from 'classnames';
 
 const Login = ({ error, login, loading, user }) => {
   let emailInput = '';
@@ -12,7 +13,7 @@ const Login = ({ error, login, loading, user }) => {
     user.token ? (
         <Redirect to="/" />
       ) : (
-      <div id="login-container" className={`ui raised very padded text container segment inverted ${loading ? 'loading' : ''}`}>
+      <div id="login-container" className={classNames('ui raised very padded text container segment inverted', { 'loading': loading })}>
         <div className="full-logo-container">
           <img src={fullLogo} alt="The Health Kitchen"/>
         </div>
