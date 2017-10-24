@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Routes, Redirect } from 'react-router'
+import { Redirect } from 'react-router'
 import { connect } from 'react-redux';
 import { login } from '../redux/authentication/actions';
 import fullLogo from '../imgs/THK-Dark.png';
@@ -58,7 +58,7 @@ Login.displayName = 'Login'
 Login.propTypes = {
   error: PropTypes.string,
   login: PropTypes.func.isRequired,
-  loading: PropTypes.boolean,
+  loading: PropTypes.bool,
   user: PropTypes.object
 }
 
