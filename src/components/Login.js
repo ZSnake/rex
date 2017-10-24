@@ -4,6 +4,8 @@ import { Redirect } from 'react-router'
 import { connect } from 'react-redux';
 import { login } from '../redux/authentication/actions';
 import fullLogo from '../imgs/THK-Dark.png';
+import classNames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 
 const Login = ({ error, login, loading, user }) => {
   let emailInput = '';
@@ -12,7 +14,7 @@ const Login = ({ error, login, loading, user }) => {
     user.token ? (
         <Redirect to="/" />
       ) : (
-      <div id="login-container" className={`ui raised very padded text container segment inverted ${loading ? 'loading' : ''}`}>
+      <div id="login-container" className={classNames('ui raised very padded text container segment inverted', { 'loading': loading })}>
         <div className="full-logo-container">
           <img src={fullLogo} alt="The Health Kitchen"/>
         </div>
@@ -65,7 +67,7 @@ Login.propTypes = {
 const mapStateToProps = ({ authentication }) => ({
   error: authentication.error,
   loading: authentication.loading,
-  user: authentication.user
+  user: isEmpty(authentication.user) ? (JSON.parse(sessionStorage.getItem('user')) || {}) : authentication.user
 });
 
 const mapDispatchToProps = dispatch => ({
