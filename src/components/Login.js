@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { login } from '../redux/authentication/actions';
 import fullLogo from '../imgs/THK-Dark.png';
 import classNames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 
 const Login = ({ error, login, loading, user }) => {
   let emailInput = '';
@@ -66,7 +67,7 @@ Login.propTypes = {
 const mapStateToProps = ({ authentication }) => ({
   error: authentication.error,
   loading: authentication.loading,
-  user: authentication.user
+  user: isEmpty(authentication.user) ? (JSON.parse(sessionStorage.getItem('user')) || {}) : authentication.user
 });
 
 const mapDispatchToProps = dispatch => ({
