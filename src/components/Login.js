@@ -1,33 +1,71 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Routes, Redirect } from 'react-router'
 import { connect } from 'react-redux';
 import { login } from '../redux/authentication/actions';
+import fullLogo from '../imgs/THK-Dark.png';
 
-const Login = ({ error, login }) => {
-  let emailInput;
-  let passwordInput
+const Login = ({ error, login, loading, user }) => {
+  let emailInput = '';
+  let passwordInput= '';
   return (
-      <div>
-          <input
-              type="text"
-              ref={node => { emailInput = node }}/>
-          <input
-              ref={node => { passwordInput = node }}
-              type="password"/>
-          <button onClick={() => login({ email: emailInput.value, password: passwordInput.value })}>Login</button>
+    user.token ? (
+        <Redirect to="/" />
+      ) : (
+      <div id="login-container" className={`ui raised very padded text container segment inverted ${loading ? 'loading' : ''}`}>
+        <div className="full-logo-container">
+          <img src={fullLogo} alt="The Health Kitchen"/>
+        </div>
+        <div id="login-form" className="ui form">
+          <div className="fields">
+            <div className="two wide field"></div>
+            <div className="twelve wide field">
+              <label className="content">Email: </label>
+              <input
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  ref={node => { emailInput = node }}/>
+            </div>
+          </div>
+          <div className="fields">
+            <div className="two wide field"></div>
+            <div className="twelve wide field">
+              <label className="content">Password: </label>
+              <input
+                  ref={node => { passwordInput = node }}
+                  placeholder="Password"
+                  name="password"
+                  type="password"/>
+            </div>
+          </div>
+          <div id="loginRegister" className="fields login-register-container">
+            <div className="six wide field"></div>
+            <div className="ui buttons">
+              <button className="ui button" onClick={() => login({ email: emailInput.value, password: passwordInput.value })}>Login</button>
+              <div className="or"></div>
+              <button className="ui positive button">Register</button>
+            </div>
+          </div>
           <h4>{error}</h4>
+        </div>
       </div>
+    )
   );
 }
 
 Login.displayName = 'Login'
 Login.propTypes = {
   error: PropTypes.string,
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  loading: PropTypes.boolean,
+  user: PropTypes.object
 }
 
 const mapStateToProps = ({ authentication }) => ({
-  error: authentication.error
+  error: authentication.error,
+  loading: authentication.loading,
+  user: authentication.user
 });
 
 const mapDispatchToProps = dispatch => ({

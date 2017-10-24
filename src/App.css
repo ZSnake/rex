@@ -1,25 +1,51 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
 .App-title {
   font-size: 1.5em;
 }
 
 .App-intro {
   font-size: large;
+}
+
+#navbar{
+  background-color: #273639;
+}
+
+.logo-img{
+  width: 100%;
+}
+
+#login-container.ui.container{
+  margin: 100px;
+  background-color: #273639;
+}
+
+.main-header{
+  color: #b2cd53;
+}
+
+.form>.fields>.field>label.content{
+  color: #8ea9a9;
+}
+.ui.positive.button {
+  background-color: #b2cd53;
+}
+.ui.button {
+  background-color: #8ea9a9;
+}
+.field{
+  text-align: left;
+}
+.full-logo-container{
+  margin: 1% 20%;
+}
+.full-logo-container>img{
+  width: 100%;
+}
+#loginRegister.login-register-container {
+  margin: 30px 0;
+}
+#login-form{
+  margin: 20px 0
 }
 
 @keyframes App-logo-spin {
