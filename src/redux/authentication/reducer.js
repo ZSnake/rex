@@ -7,7 +7,8 @@ const initialState = {
 };
 
 const authentication = (state = initialState, action) => {
-  switch(action.type){
+  const { type, user, error } = action
+  switch (type) {
     case types.LOGIN_REQUEST:
       return {
         user: {},
@@ -16,14 +17,14 @@ const authentication = (state = initialState, action) => {
       };
     case types.LOGIN_SUCCESS:
       return {
-        user: action.user,
+        user: user,
         error: '',
         loading: false
       };
     case types.LOGIN_FAILURE:
       return {
         user: {},
-        error: action.error,
+        error: error,
         loading: false
       };
     default:

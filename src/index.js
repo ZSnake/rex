@@ -10,7 +10,9 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import reducers from './redux/';
 
-const store = createStore(reducers, applyMiddleware(thunkMiddleware));
+const store = createStore(reducers,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+	applyMiddleware(thunkMiddleware));
 
 ReactDOM.render((
   <BrowserRouter>
