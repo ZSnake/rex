@@ -20,8 +20,8 @@ class App extends Component {
   componentDidMount = () => {
     this.props.fetchUser();
   };
-  render() {
-    return (<div className="App">
+  render = () =>
+    (<div className="App">
       <nav id="navbar" className="ui massive menu inverted">
         <div id="logo" className="header item">
           <img className="logo-img" src={logo} alt="logo"/>
@@ -34,7 +34,6 @@ class App extends Component {
       <Route exact={true} path="/" component={() => (<div><h1 className="main-header">Home</h1></div>)}></Route>
       {routes.map(route => (<Route key={route.toString()} exact={true} path={route.path} component={route.component}></Route>))}
     </div>);
-  }
 };
 
 const mapStateToProps = ({ authentication }) => ({
