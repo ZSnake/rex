@@ -11,10 +11,18 @@ export const loginSuccess = user => ({
   user
 });
 
+export const fetchUser = () => ({
+  type: types.FETCH_USER,
+});
+
 export const loginFailure = error => ({
   type: types.LOGIN_FAILURE,
   error
 });
+
+export const logout = () => ({
+  type: types.LOGOUT,
+})
 
 export const login = credentials => dispatch => {
   dispatch(loginRequest());

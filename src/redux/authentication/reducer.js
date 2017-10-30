@@ -27,6 +27,18 @@ const authentication = (state = initialState, action) => {
         error: error,
         loading: false
       };
+    case types.FETCH_USER:
+      const storageUser = JSON.parse(sessionStorage.getItem('user'));
+      return {
+        ...state,
+        user: storageUser ? storageUser : {},
+      };
+    case types.LOGOUT:
+      sessionStorage.clear();
+      return {
+        ...state,
+        user: {},
+      };
     default:
       return initialState;
   }
