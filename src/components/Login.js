@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router'
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'; 
 import { login } from '../redux/authentication/actions';
 import fullLogo from '../imgs/THK-Dark.png';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
+
+const RegisterButton = withRouter(({ history }) => (
+  <button className="ui positive button" onClick={() => history.push('/register')}>Register</button>  
+));
 
 const Login = ({ error, login, loading, user }) => {
   let emailInput = '';
@@ -14,7 +19,7 @@ const Login = ({ error, login, loading, user }) => {
     user.token ? (
         <Redirect to="/" />
       ) : (
-      <div id="login-container" className={classNames('ui raised very padded text container segment inverted', { 'loading': loading })}>
+      <div id="login-container" className={classNames('ui raised very padded text container segment', { 'loading': loading })}>
         <div className="full-logo-container">
           <img src={fullLogo} alt="The Health Kitchen"/>
         </div>
@@ -46,7 +51,7 @@ const Login = ({ error, login, loading, user }) => {
             <div className="ui buttons">
               <button className="ui button" onClick={() => login({ email: emailInput.value, password: passwordInput.value })}>Login</button>
               <div className="or"></div>
-              <button className="ui positive button">Register</button>
+              <RegisterButton />
             </div>
           </div>
           <h4>{error}</h4>
