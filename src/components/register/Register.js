@@ -11,12 +11,13 @@ const PASSWORD_MISMATCH_ERROR = 'Passwords don\'t match. Please try again.';
 const UNKNOWN_ERROR = 'Unknown error. Please try again.'
 
 const passwordsMatch = (password, confirmPassword) => password === confirmPassword
-const createUser = (email, password, confirmPassword, firstName, lastName, { showLoading, clearLoading, setCreatedUser, setError, history }) => {
+const registerUser = (email, password, confirmPassword, firstName, lastName, { showLoading, clearLoading, setCreatedUser, setError, history }) => {
 	if (password.trim() === '' || confirmPassword.trim() === '' || !passwordsMatch(password, confirmPassword)) {
 		return setError(PASSWORD_MISMATCH_ERROR);
 	}
+	const name = `${firstName.trim()} ${lastName.trim()}`;
 	showLoading();
-	authService.registerUser({ email, password, confirmPassword, firstName, lastName })
+	authService.registerUser({ email, password, name })
 		.then(response => response.json())
 		.then(response => {
 			clearLoading();
@@ -66,7 +67,7 @@ const Register = props => {
 							</div>
 						</div>
 						<button className="ui fluid button"
-							onClick={() => createUser(emailInput.value, passwordInput.value, confirmPasswordInput.value, firstNameInput.value, lastNameInput.value, props)}>Register</button>
+							onClick={() => registerUser(emailInput.value, passwordInput.value, confirmPasswordInput.value, firstNameInput.value, lastNameInput.value, props)}>Register</button>
 						<h4>{props.error}</h4>
 					</div>
 				</div>
