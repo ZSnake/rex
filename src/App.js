@@ -4,6 +4,7 @@ import logo from './imgs/logo.png';
 import { Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import { Register } from './components/register';
+import { CreateUser } from './components/user';
 
 const routes = [{
   path: '/login',
@@ -11,6 +12,9 @@ const routes = [{
 }, {
   path: '/register',
   component: Register
+}, {
+  path: '/createUser',
+  component: CreateUser
 }];
 
 const App = () => <div className="App">
