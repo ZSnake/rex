@@ -3,10 +3,14 @@ import './App.css';
 import logo from './imgs/logo.png';
 import { Route, Link } from 'react-router-dom';
 import Login from './components/Login';
+import { Register } from './components/register';
 
 const routes = [{
   path: '/login',
   component: Login
+}, {
+  path: '/register',
+  component: Register
 }];
 
 const App = () => <div className="App">
@@ -20,7 +24,7 @@ const App = () => <div className="App">
     </div>
   </nav>
   <Route exact={true} path="/" component={() => (<div><h1 className="main-header">Home</h1></div>)}></Route>
-  {routes.map(route => (<Route key={route.toString()} path={route.path} component={route.component}></Route>))}
+  {routes.map(route => (<Route key={route.path} path={route.path} component={route.component}></Route>))}
 </div>;
 
 export default App;
