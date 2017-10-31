@@ -39,10 +39,6 @@ const authentication = (state = initialState, action) => {
       return {
         error
       };
-    case types.SET_CREATED_USER:
-      return {
-        user
-      };
     default:
       return initialState;
   }

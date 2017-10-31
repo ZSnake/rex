@@ -11,7 +11,7 @@ const PASSWORD_MISMATCH_ERROR = 'Passwords don\'t match. Please try again.';
 const UNKNOWN_ERROR = 'Unknown error. Please try again.'
 
 const passwordsMatch = (password, confirmPassword) => password === confirmPassword
-const createUser = (email, password, confirmPassword, firstName, lastName, { showLoading, clearLoading, setCreatedUser, setError }) => {
+const createUser = (email, password, confirmPassword, firstName, lastName, { showLoading, clearLoading, setCreatedUser, setError, history }) => {
 	if (password.trim() === '' || confirmPassword.trim() === '' || !passwordsMatch(password, confirmPassword)) {
 		return setError(PASSWORD_MISMATCH_ERROR);
 	}
@@ -20,7 +20,7 @@ const createUser = (email, password, confirmPassword, firstName, lastName, { sho
 		.then(response => response.json())
 		.then(response => {
 			clearLoading();
-			setCreatedUser(response);
+			history.push('/login');
 		})
 		.catch(() => {
 			clearLoading();
@@ -93,8 +93,7 @@ const mapStateToProps = ({ authentication }) => ({
 const mapDispatchToProps = dispatch => ({
 	showLoading: () => dispatch({ type: types.SHOW_LOADING }),
 	clearLoading: () => dispatch({ type: types.CLEAR_LOADING }),
-	setError: error => dispatch({ type: types.SET_ERROR, error }),
-	setCreatedUser: user => dispatch({ type: types.SET_CREATED_USER, user })
+	setError: error => dispatch({ type: types.SET_ERROR, error })
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
