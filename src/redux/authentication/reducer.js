@@ -24,8 +24,24 @@ const authentication = (state = initialState, action) => {
     case types.LOGIN_FAILURE:
       return {
         user: {},
-        error: error,
+        error,
         loading: false
+      };
+    case types.SHOW_LOADING:
+      return {
+        loading: true
+      };
+    case types.CLEAR_LOADING:
+      return {
+        loading: false
+      };
+    case types.SET_ERROR:
+      return {
+        error
+      };
+    case types.SET_CREATED_USER:
+      return {
+        user
       };
     default:
       return initialState;

@@ -9,6 +9,15 @@ const login = credentials => fetch(`${baseUrl}/login`, {
   body: JSON.stringify(credentials)
 });
 
+const registerUser = user => fetch(`${baseUrl}/register`, {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+  },
+  body: JSON.stringify(user)
+});
+
 export default {
   login,
-}
+  registerUser
+};
