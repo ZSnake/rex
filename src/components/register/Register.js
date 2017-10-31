@@ -39,7 +39,7 @@ const Register = props => {
 
 	return (<div className="ui one column grid RegisterForm">
 		<div className="row">
-		 	<div id="login-container" className={classNames('ui raised very padded text container segment', { 'loading': props.loading })}>
+		 	<div className={classNames('ui raised very padded text container segment RegisterForm-segment', { 'loading': props.loading })}>
 				<div className="six wide centered column RegisterForm-form">
 					<div className="full-logo-container"><img src={fullLogo} alt="The Health Kitchen"/></div>
 					<div className="ui form">

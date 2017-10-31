@@ -5,6 +5,7 @@ import { Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import { Register } from './components/register';
 import { CreateUser } from './components/user';
+import { CreateIngredient } from './components/ingredient';
 
 const routes = [{
   path: '/login',
@@ -13,8 +14,11 @@ const routes = [{
   path: '/register',
   component: Register
 }, {
-  path: '/createUser',
+  path: '/createuser',
   component: CreateUser
+}, {
+  path: '/createingredient',
+  component: CreateIngredient
 }];
 
 const App = () => <div className="App">
