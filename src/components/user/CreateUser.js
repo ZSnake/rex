@@ -5,24 +5,22 @@ import fullLogo from '../../imgs/THK-Dark.png';
 import authService from '../../services/authentication';
 import * as types from '../../redux/authentication/types';
 import classNames from 'classnames';
-require('./register.css');
+require('./createUser.css');
 
 const PASSWORD_MISMATCH_ERROR = 'Passwords don\'t match. Please try again.';
 const UNKNOWN_ERROR = 'Unknown error. Please try again.'
-const USER_TYPE = 'customer';
 
 const passwordsMatch = (password, confirmPassword) => password === confirmPassword
-const registerUser = (email, password, confirmPassword, firstName, lastName, { showLoading, clearLoading, setError, history }) => {
+const createUser = (email, password, confirmPassword, firstName, lastName, type, { showLoading, clearLoading, setError, history }) => {
 	if (password.trim() === '' || confirmPassword.trim() === '' || !passwordsMatch(password, confirmPassword)) {
 		return setError(PASSWORD_MISMATCH_ERROR);
 	}
 	const name = `${firstName.trim()} ${lastName.trim()}`;
 	showLoading();
-	authService.registerUser({ email, password, name, type: USER_TYPE })
+	authService.registerUser({ email, password, name, type })
 		.then(response => response.json())
 		.then(response => {
 			clearLoading();
-			history.push('/login');
 		})
 		.catch(() => {
 			clearLoading();
@@ -30,45 +28,53 @@ const registerUser = (email, password, confirmPassword, firstName, lastName, { s
 		});
 }
 
-const Register = props => {
+const CreateUser = props => {
 	let emailInput;
 	let passwordInput;
 	let confirmPasswordInput;
 	let firstNameInput;
 	let lastNameInput;
+	let menuInput;
 
-	return (<div className="ui one column grid RegisterForm">
+	return (<div className="ui one column grid CreateUserForm">
 		<div className="row">
 		 	<div id="login-container" className={classNames('ui raised very padded text container segment', { 'loading': props.loading })}>
-				<div className="six wide centered column RegisterForm-form">
+				<div className="six wide centered column CreateUserForm-form">
 					<div className="full-logo-container"><img src={fullLogo} alt="The Health Kitchen"/></div>
 					<div className="ui form">
 						<div className="field">
-							<label className="RegisterForm-label"> Email </label>
+							<label className="CreateUserForm-label"> Email </label>
 							<input type="text" placeholder="Enter email" ref={node => { emailInput = node }} />
 						</div>
 						<div className="two fields">
 							<div className="field">
-								<label className="RegisterForm-label"> Password </label>
+								<label className="CreateUserForm-label"> Password </label>
 								<input type="password" placeholder="Enter password" ref={node => { passwordInput = node }} />
 							</div>
 							<div className="field">
-								<label className="RegisterForm-label"> Confirm Password </label>
+								<label className="CreateUserForm-label"> Confirm Password </label>
 								<input type="password" placeholder="Confirm password" ref={node => { confirmPasswordInput = node }} />
 							</div>
 						</div>
-						<div className="two fields">
+						<div className="three fields">
 							<div className="field">
-								<label className="RegisterForm-label"> First Name </label>
+								<label className="CreateUserForm-label"> First Name </label>
 								<input type="text" placeholder="Enter first name" ref={node => { firstNameInput = node }} />
 							</div>
 							<div className="field">
-								<label className="RegisterForm-label"> Last Name </label>
+								<label className="CreateUserForm-label"> Last Name </label>
 								<input type="text" placeholder="Enter last name" ref={node => { lastNameInput = node }} />
+							</div>
+							<div className="field">
+								<label className="CreateUserForm-label"> Type </label>
+								<select id = "dropdown" ref = {node => menuInput = node}>
+								    <option value="admin">Admin</option>
+								    <option value="customer">Customer</option>
+								</select>
 							</div>
 						</div>
 						<button className="ui fluid button"
-							onClick={() => registerUser(emailInput.value, passwordInput.value, confirmPasswordInput.value, firstNameInput.value, lastNameInput.value, props)}>Register</button>
+							onClick={() => createUser(emailInput.value, passwordInput.value, confirmPasswordInput.value, firstNameInput.value, lastNameInput.value, menuInput.value, props)}>Create User</button>
 						<h4>{props.error}</h4>
 					</div>
 				</div>
@@ -77,8 +83,8 @@ const Register = props => {
 	</div>);
 };
 
-Register.displayName = 'Register';
-Register.propTypes = {
+CreateUser.displayName = 'CreateUser';
+CreateUser.propTypes = {
 	loading: PropTypes.bool,
 	error: PropTypes.string,
 	showLoading: PropTypes.func,
@@ -97,4 +103,4 @@ const mapDispatchToProps = dispatch => ({
 	setError: error => dispatch({ type: types.SET_ERROR, error })
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateUser);
