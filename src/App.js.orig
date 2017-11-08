@@ -2,10 +2,14 @@ import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import Login from './components/Login';
+<<<<<<< HEAD
 import Navbar from './components/Navbar';
+=======
 import { Register } from './components/register';
 import { CreateUser } from './components/user';
 import { CreateIngredient } from './components/ingredient';
+
+>>>>>>> 753c4a19cd10c905d019648f59bed71cf46bae71
 const routes = [{
   path: '/login',
   component: Login

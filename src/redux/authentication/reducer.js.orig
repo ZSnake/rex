@@ -22,7 +22,19 @@ const authentication = (state = initialState, action) => {
       };
     case types.LOGIN_FAILURE:
       return {
+<<<<<<< HEAD
         ...state,
+        loading: false,
+        error: error
+      };
+    case types.LOGOUT:
+      sessionStorage.clear();
+      return {
+        ...state,
+        user: {}
+      }
+=======
+        user: {},
         error,
         loading: false
       };
@@ -32,17 +44,13 @@ const authentication = (state = initialState, action) => {
       };
     case types.CLEAR_LOADING:
       return {
+        loading: false
       };
     case types.SET_ERROR:
       return {
         error
       };
-    case types.LOGOUT:
-      sessionStorage.clear();
-      return {
-        ...state,
-        user: {}
-      }
+>>>>>>> 753c4a19cd10c905d019648f59bed71cf46bae71
     default:
       return initialState;
   }
