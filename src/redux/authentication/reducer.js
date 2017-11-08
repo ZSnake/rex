@@ -26,6 +26,12 @@ const authentication = (state = initialState, action) => {
         loading: false,
         error: error
       };
+    case types.LOGOUT:
+      sessionStorage.clear();
+      return {
+        ...state,
+        user: {}
+      }
     default:
       return initialState;
   }

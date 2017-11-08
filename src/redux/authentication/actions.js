@@ -16,6 +16,10 @@ export const loginFailure = error => ({
   error
 });
 
+export const logout = () => ({
+  type: types.LOGOUT,
+});
+
 export const login = credentials => dispatch => {
   dispatch(loginRequest());
   return authenticationService.login(credentials)
