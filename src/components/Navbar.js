@@ -8,15 +8,20 @@ import { logout } from '../redux/authentication/actions';
 const Navbar = ({user, logout}) =>
   (
     <nav id="navbar" className="ui massive menu inverted">
-    <div id="logo" className="header item">
-      <img className="logo-img" src={logo} alt="logo"/>
-    </div>
-    <div className="right menu">
-      <Link className="item" to="/">Home</Link>
-      {isEmpty(user) ?
-      <Link className="item" to="/login">Login</Link> :
-      <a className="item" onClick={e => {e.preventDefault(); logout()}}>Logout</a>}
-    </div>
+      <Link to="/">
+        <div id="logo" className="header item">
+          <img className="logo-img" src={logo} alt="logo"/>
+        </div>
+      </Link>
+      <div className="right menu">
+        {!isEmpty(user) ? (<Link className="item" to="/">Home</Link>) : ''}
+        {!isEmpty(user) && user.type === 'admin' ?
+        <Link className="item" to="/createingredient">Crear Ingrediente</Link> :
+        ''}
+        {isEmpty(user) ?
+        <Link className="item" to="/login">Login</Link> :
+        <a className="item" onClick={e => {e.preventDefault(); logout()}}>Logout</a>}
+      </div>
     </nav>
   );
 

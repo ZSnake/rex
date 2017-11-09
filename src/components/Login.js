@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'; 
+import { withRouter } from 'react-router-dom';
 import { login } from '../redux/authentication/actions';
 import fullLogo from '../imgs/THK-Dark.png';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
 const RegisterButton = withRouter(({ history }) => (
-  <button className="ui positive button" onClick={() => history.push('/register')}>Register</button>  
+  <button className="ui positive button" onClick={() => history.push('/register')}>Register</button>
 ));
 
 const Login = ({ error, login, loading, user }) => {

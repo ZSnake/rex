@@ -5,7 +5,9 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import { Register } from './components/register';
 import { CreateUser } from './components/user';
-import { CreateIngredient } from './components/ingredient';
+import { CreateIngredient } from './components/createIngredients';
+import { Ingredients } from './components/listIngredients';
+
 const routes = [{
   path: '/login',
   component: Login
@@ -18,6 +20,9 @@ const routes = [{
 }, {
   path: '/createingredient',
   component: CreateIngredient
+}, {
+  path: '/ingredients',
+  component: Ingredients
 }];
 
 const App = () => <div className="App">
