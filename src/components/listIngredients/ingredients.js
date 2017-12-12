@@ -33,7 +33,7 @@ class Ingredients extends Component {
           <div className="center aligned">
             <h1 className="center aligned">Ingredients</h1>
           </div>
-          <table className="ui selectable inverted table">
+          <table className="ui celled selectable inverted table">
             <thead>
               <tr className="center aligned">
                 <th>Name</th>
@@ -46,7 +46,10 @@ class Ingredients extends Component {
                 <tr key={ingredient.id}>
                   <td>{ingredient.name}</td>
                   <td>{ingredient.description}</td>
-                  <td className="right aligned">
+                  <td className="center aligned">
+                    <span className="actionButton">
+                      <i className="fa fa-info-circle fa-2x"></i>
+                    </span>
                     <span className="actionButton">
                       <i className="fa fa-pencil fa-2x"></i>
                     </span>

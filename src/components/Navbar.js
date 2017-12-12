@@ -16,7 +16,7 @@ const Navbar = ({user, logout}) =>
       <div className="right menu">
         {!isEmpty(user) ? (<Link className="item" to="/">Home</Link>) : ''}
         {!isEmpty(user) && user.type === 'admin' ?
-        <Link className="item" to="/createingredient">Crear Ingrediente</Link> :
+        <Link className="item" to="/ingredients">Ingredientes</Link> :
         ''}
         {isEmpty(user) ?
         <Link className="item" to="/login">Login</Link> :
