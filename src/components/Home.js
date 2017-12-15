@@ -55,7 +55,7 @@ const Home = () => (
       </div>
     </section>
     <footer className="footer bg-dark featured-block">
-      <div className="thumbnail">
+      <div className="thumbnail footer-logo">
         <img src={hkLogo} alt="Logo" />
       </div>
       <div className='desc align-lf'>
