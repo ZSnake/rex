@@ -5,6 +5,7 @@ import pizzaImg from '../imgs/pizza.jpg';
 import chickenImg from '../imgs/chicken.jpg';
 import parfaitImg from '../imgs/parfait.jpg';
 import saladImg from '../imgs/salad.jpg';
+import hkLogo from '../imgs/hk-logo.svg';
 
 const Home = () => (
   <div>
@@ -17,17 +18,17 @@ const Home = () => (
       <h3 className="orange">Ahora en Tegus</h3>
       <p className="olive">Con nuestro variado cuidadosamente diseñado para que mantengás la linea podrás comer sanamente; sin sacrificios.</p>
     </section>
-    <section className={classNames('featured-block bg-dark')}>
+    <section className="featured-block bg-dark">
       <div className="thumbnail">
         <img src={pizzaImg} alt="Pizza" />
       </div>
-      <div className={classNames('desc bg-dark align-lt')}>
+      <div className="desc bg-dark align-lt">
         <h3 className="green">Comé sin Culpa</h3>
         <p className="olive">Con una variedad de platillos diseñados para que no pasés hambre y al mismo tiempo podás comer un platillo nutritivo y saludable; estar a dieta no es sinónimo de sufrimiento.</p>
       </div>
     </section>
     <section className="featured-block bg-green">
-      <div className={classNames("desc bg-green align-rt")}>
+      <div className="desc bg-green align-rt">
         <h3 className="white">Saludable no es sólo Ensaladas</h3>
         <p className="white">Desde hamburguesas hasta postres, nuestro variado menu esta especialmente diseñado para que siempre comás variado y saludable sin quedar con hambre.</p>
       </div>
@@ -35,17 +36,17 @@ const Home = () => (
         <img src={chickenImg} alt="Chicken" />
       </div>
     </section>
-    <section className={classNames("featured-block bg-cream align-lt")}>
+    <section className="featured-block bg-cream align-lt">
       <div className="thumbnail">
         <img src={parfaitImg} alt="Parfait" />
       </div>
-      <div className={classNames("desc bg-cream")}>
+      <div className="desc bg-cream">
         <h3 className="orange">Nutrition Facts</h3>
         <p className="soil">Nuestros platillos estan cuidadosamente diseñados y su informacion nutricional te será detallada para que siempre sepas <b>exactamente</b> lo que estas comiendo</p>
       </div>
     </section>
-    <section className={classNames("featured-block bg-khaki")}>
-      <div className={classNames("desc align-rt")}>
+    <section className="featured-block bg-khaki">
+      <div className="desc align-rt">
         <h3 className="forest">Hacer Dieta es también Romperla</h3>
         <p className="soil">Para esos merecidos días donde decidís romper la dieta, tenemos deliciosas opciones, desde platillos fuertes hasta postres, para que tengás una deliciosa alternativa.</p>
       </div>
@@ -53,11 +54,11 @@ const Home = () => (
         <img src={saladImg} alt="Ensalada" />
       </div>
     </section>
-    <footer className={classNames('footer bg-dark')}>
-      <div className="footer-logo">
-        <h1 className="hk-logo">Tasty & Delicious</h1>
+    <footer className="footer bg-dark featured-block">
+      <div className="thumbnail">
+        <img src={hkLogo} alt="Logo" />
       </div>
-      <div className={classNames('desc align-lf')}>
+      <div className='desc align-lf'>
         <h3 className="green">Ubicanos</h3>
         <p className="olive">Metrópolis</p>
         <p className="olive">Torre #2</p>
