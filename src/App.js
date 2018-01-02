@@ -32,7 +32,7 @@ const routes = [{
 
 const App = () => (<div className="App">
   {window.location.pathname !== '/' ? (<Navbar></Navbar>) : ''}
-  {routes.map(route => (<Route key={route.path} path={route.path} component={route.component}></Route>))}
+  {routes.map(route => (<Route exact key={route.path} path={route.path} component={route.component}></Route>))}
 </div>);
 
 export default App;
