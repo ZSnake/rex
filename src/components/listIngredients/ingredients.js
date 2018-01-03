@@ -1,5 +1,4 @@
 import  React,{ Component } from 'react';
-import { Redirect } from 'react-router';
 import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import * as types from '../../redux/ingredient/types';
@@ -13,6 +12,8 @@ const getIngredients = ({getIngredientsSuccess, getIngredientsFailure,
     return ingredientService.getIngredients(user.token)
     .then(response => response.json())
     .then(result => {
+      if(result.statusCode >= 400)
+        return getIngredientsFailure(result.error);
       getIngredientsSuccess(result);
       history.push('/ingredients');
     })
@@ -21,12 +22,12 @@ const getIngredients = ({getIngredientsSuccess, getIngredientsFailure,
 
 class Ingredients extends Component {
   componentDidMount = () => {
+    if(isEmpty(this.props.user) || this.props.user.type !== 'admin')
+      this.props.history.push('/');
     getIngredients(this.props);
   };
 
   render = () => {
-    if(isEmpty(this.props.user) || this.props.user.type !== 'admin')
-      return <Redirect to="/" />
     return (
       <div className="row">
         <div className='ui raised very padded segment text ingredientsContainer-segment'>
