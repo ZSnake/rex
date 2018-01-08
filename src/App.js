@@ -6,8 +6,10 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import { Register } from './components/register';
 import { CreateUser } from './components/user';
+import { CreateDish } from './components/createDishes';
 import { CreateIngredient } from './components/createIngredients';
 import { Ingredients } from './components/listIngredients';
+import { Dishes } from './components/listDishes';
 
 
 const routes = [{
@@ -20,19 +22,25 @@ const routes = [{
   path: '/createuser',
   component: CreateUser
 }, {
+  path: '/createdish',
+  component: CreateDish
+}, {
   path: '/createingredient',
   component: CreateIngredient
 }, {
   path: '/ingredients',
   component: Ingredients
 }, {
+  path: '/dishes',
+  component: Dishes
+}, {
   path: '/',
   component: Home,
 }];
 
 const App = () => (<div className="App">
-  {window.location.pathname !== '/' ? (<Navbar></Navbar>) : ''}
-  {routes.map(route => (<Route exact key={route.path} path={route.path} component={route.component}></Route>))}
+  <Navbar></Navbar>
+  {routes.map(route => (<Route key={route.path} path={route.path} component={route.component}></Route>))}
 </div>);
 
 export default App;
