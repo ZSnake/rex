@@ -16,7 +16,7 @@ const Home = () => (
     <section className="intro-block">
       <h2 className="green">Healthy & Delicious</h2>
       <h3 className="orange">Ahora en Tegus</h3>
-      <p className="olive">Con nuestro variado cuidadosamente diseñado para que mantengás la linea podrás comer sanamente; sin sacrificios.</p>
+      <p className="olive">Con nuestro variado menú cuidadosamente diseñado para que mantengás la linea podrás comer sanamente; sin sacrificios.</p>
     </section>
     <section className="featured-block bg-dark">
       <div className="thumbnail">
@@ -61,13 +61,13 @@ const Home = () => (
       <div className='desc align-lf'>
         <h3 className="green">Ubicanos</h3>
         <p className="olive">Metrópolis</p>
-        <p className="olive">Torre #2</p>
+        <p className="olive">Torre #1</p>
         <p className="olive">Segundo piso</p>
         <p className="olive">Local C212, entre Nativo y Bistro</p>
         <p>
-          <a href=""><i className={classNames('fa fa-facebook-square fa-2x sn-icon')}></i></a>
-          <a href=""><i className={classNames('fa fa-twitter-square fa-2x sn-icon')}></i></a>
-          <a href=""><i className={classNames('fa fa-instagram fa-2x sn-icon')}></i></a>
+          <a href="https://fb.me/healthkitchenhn"><i className={classNames('fa fa-facebook-square fa-2x sn-icon')}></i></a>
+          <a href="https://www.instagram.com/healthkitchenhn/"><i className={classNames('fa fa-twitter-square fa-2x sn-icon')}></i></a>
+          <a href="https://twitter.com/healthkitchenhn/"><i className={classNames('fa fa-instagram fa-2x sn-icon')}></i></a>
         </p>
       </div>
     </footer>
