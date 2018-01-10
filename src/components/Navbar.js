@@ -5,18 +5,24 @@ import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import { logout } from '../redux/authentication/actions';
 
+const navStyle = {
+  "marginBottom": 0
+};
+
 const Navbar = ({user, logout}) =>
   (
     <nav id="navbar" className="ui massive menu inverted">
-      <Link to="/">
+      <Link to="/" style={navStyle}>
         <div id="logo" className="header item">
           <img className="logo-img" src={logo} alt="logo"/>
         </div>
       </Link>
       <div className="right menu">
-        {!isEmpty(user) ? (<Link className="item" to="/">Home</Link>) : ''}
         {!isEmpty(user) && user.type === 'admin' ?
         <Link className="item" to="/ingredients">Ingredientes</Link> :
+        ''}
+        {!isEmpty(user) && user.type === 'admin' ?
+        <Link className="item" to="/dishes">Dishes</Link> :
         ''}
         {isEmpty(user) ?
         <Link className="item" to="/login">Login</Link> :

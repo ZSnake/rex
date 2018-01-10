@@ -1,30 +1,30 @@
 import  React,{ Component } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
-import * as types from '../../redux/ingredient/types';
-import ingredientService from '../../services/ingredients';
+import * as types from '../../redux/dish/types';
+import dishesService from '../../services/dishes';
 
-require('./ingredients.css');
+require('./dishes.css');
 
-const getIngredients = ({getIngredientsSuccess, getIngredientsFailure,
-  getIngredientsRequest, user, history}) => {
-    getIngredientsRequest();
-    return ingredientService.getIngredients(user.token)
+const getDishes = ({getDishesSuccess, getDishesFailure,
+  getDishesRequest, user, history}) => {
+    getDishesRequest();
+    return dishesService.getDishes(user.token)
     .then(response => response.json())
     .then(result => {
       if(result.statusCode >= 400)
-        return getIngredientsFailure(result.error);
-      getIngredientsSuccess(result);
-      history.push('/ingredients');
+        return getDishesFailure(result.error);
+      getDishesSuccess(result);
+      history.push('/dishes');
     })
-    .catch(error => getIngredientsFailure(error));
+    .catch(error => getDishesFailure(error));
 };
 
-class Ingredients extends Component {
+class Dishes extends Component {
   componentDidMount = () => {
     if(isEmpty(this.props.user) || this.props.user.type !== 'admin')
       this.props.history.push('/');
-    getIngredients(this.props);
+    getDishes(this.props);
   };
 
   render = () => {
@@ -32,21 +32,20 @@ class Ingredients extends Component {
       <div className="row">
         <div className='ui raised very padded segment text ingredientsContainer-segment'>
           <div className="center aligned">
-            <h1 className="center aligned">Ingredients</h1>
+            <h1 className="center aligned">Dishes</h1>
           </div>
           <table className="ui celled selectable inverted table">
             <thead>
               <tr className="center aligned">
                 <th>Name</th>
                 <th>Description</th>
-                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {this.props.ingredients.map(ingredient => (
-                <tr key={ingredient.id}>
-                  <td>{ingredient.name}</td>
-                  <td>{ingredient.description}</td>
+              {this.props.dishes.map(dish => (
+                <tr key={dish.id}>
+                  <td>{dish.name}</td>
+                  <td>{dish.description}</td>
                   <td className="center aligned">
                     <button className="actionButton">
                       <i className="fa fa-info-circle fa-2x"></i>
@@ -63,7 +62,7 @@ class Ingredients extends Component {
             </tbody>
           </table>
           <div className="row add-button-container">
-            <button onClick={() => {this.props.history.push('/createingredient')}} className="ui circular large icon button right floated">
+            <button onClick={() => {this.props.history.push('/createdish')}} className="ui circular large icon button right floated">
               <i className="fa fa-plus"></i>
             </button>
           </div>
@@ -73,18 +72,18 @@ class Ingredients extends Component {
   }
 };
 
-const mapStateToProps = ({ authentication, ingredient }) => ({
+const mapStateToProps = ({ authentication, dish }) => ({
   error: authentication.error,
   loading: authentication.loading,
   user: isEmpty(authentication.user) ? (JSON.parse(sessionStorage.getItem('user')) || {}) : authentication.user,
-  ingredients: ingredient.ingredients,
+  dishes: dish.dishes,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getIngredientsRequest: () => dispatch({type: types.GET_INGREDIENTS_REQUEST}),
-  getIngredientsSuccess: ingredients => dispatch({type: types.GET_INGREDIENTS_SUCCESS, ingredients}),
-  getIngredientsFailure: error => dispatch({type: types.GET_INGREDIENTS_FAILURE, error})
+  getDishesRequest: () => dispatch({type: types.GET_DISHES_REQUEST}),
+  getDishesSuccess: dishes => dispatch({type: types.GET_DISHES_SUCCESS, dishes}),
+  getDishesFailure: error => dispatch({type: types.GET_DISHES_FAILURE, error})
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Ingredients);
+export default connect(mapStateToProps, mapDispatchToProps)(Dishes);
