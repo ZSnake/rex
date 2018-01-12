@@ -15,12 +15,12 @@ const getDishes = ({getDishesSuccess, getDishesFailure,
       if(result.statusCode >= 400)
         return getDishesFailure(result.error);
       getDishesSuccess(result);
-      history.push('/dishes');
+      history.push('/profile');
     })
     .catch(error => getDishesFailure(error));
 };
 
-class Dishes extends Component {
+class Profile extends Component {
   componentDidMount = () => {
     if(isEmpty(this.props.user) || this.props.user.type !== 'admin')
       this.props.history.push('/');
@@ -32,7 +32,7 @@ class Dishes extends Component {
       <div className="row">
         <div className='ui raised very padded segment text ingredientsContainer-segment'>
           <div className="center aligned">
-            <h1 className="center aligned">Dishes</h1>
+            <h1 className="center aligned">Profile</h1>
           </div>
           <table className="ui celled selectable inverted table">
             <thead>
@@ -87,4 +87,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dishes);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
