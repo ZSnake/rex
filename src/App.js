@@ -10,6 +10,8 @@ import { CreateDish } from './components/createDishes';
 import { CreateIngredient } from './components/createIngredients';
 import { Ingredients } from './components/listIngredients';
 import { Dishes } from './components/listDishes';
+import { Menu } from './components/menu';
+import { Profile } from './components/profile';
 
 
 const routes = [{
@@ -21,6 +23,9 @@ const routes = [{
 }, {
   path: '/createuser',
   component: CreateUser
+},{
+  path: '/profile',
+  component: Profile
 }, {
   path: '/createdish',
   component: CreateDish
@@ -33,6 +38,9 @@ const routes = [{
 }, {
   path: '/dishes',
   component: Dishes
+}, {
+  path: '/menu',
+  component: Menu,
 }, {
   path: '/',
   component: Home,

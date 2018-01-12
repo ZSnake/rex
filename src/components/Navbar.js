@@ -18,6 +18,12 @@ const Navbar = ({user, logout}) =>
         </div>
       </Link>
       <div className="right menu">
+        {!isEmpty(user) && (user.type !== 'admin') ?
+        <Link className="item" to="/profile">Profile</Link> :
+        ''}
+        {!isEmpty(user) ?
+        <Link className="item" to="/menu">Menu</Link> :
+        ''}
         {!isEmpty(user) && user.type === 'admin' ?
         <Link className="item" to="/ingredients">Ingredientes</Link> :
         ''}
