@@ -18,7 +18,16 @@ const getIngredients = token => fetch(`${baseUrl}/ingredients`, {
   },
 });
 
+const deleteIngredient = (token, payload) => fetch(`${baseUrl}/ingredient/${payload.id}`, {
+  method: 'DELETE',
+  headers: {
+    Accept: 'application/json',
+    Authorization: `Bearer ${token}`
+  },
+});
+
 export default {
   createIngredient,
   getIngredients,
+  deleteIngredient
 }
