@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import * as types from '../../redux/dish/types';
 import ingredientService from '../../services/dishes';
 
-require('./createDishes.css');
+require('./createDish.css');
 
 const saveDish = (ingredient, {createDishSuccess, createDishFailure,
   createDishRequest, user, history}) => {
