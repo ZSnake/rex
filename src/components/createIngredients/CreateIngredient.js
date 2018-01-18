@@ -25,7 +25,7 @@ const CreateIngredient = props => {
   monosaturatedFat, cholesterol, sodium, totalCarbs, dietaryFiber, sugars,
   addedSugar, sugarAlcohol, protein, calcium, iron, vitaminD, potassium,
   description;
-  if(isEmpty(props.user) || props.user.type !== 'admin')
+  if(isEmpty(props.user))
     return <Redirect to="/" />
 	return (<div className="ui one column grid CreateIngredientForm">
 		<div className="row">

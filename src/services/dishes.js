@@ -18,17 +18,26 @@ const getDishes = token => fetch(`${baseUrl}/dishes`, {
   },
 });
 
-const addIngredientsToDish = (token, payload) => fetch(`${baseUrl}/dish/ingredients/${payload.dishId}`, {
-  method: 'POST',
+const addIngredientsToDish = (token, payload) => fetch(`${baseUrl}/dish/ingredients/${payload.id}`, {
+  method: 'PUT',
   headers: {
     Accept: 'application/json',
     Authorization: `Bearer ${token}`
   },
-  body: JSON.stringify(delete payload.dishId)
+  body: JSON.stringify(payload.ingredientsIds)
+});
+
+const deleteDish = (token, payload) => fetch(`${baseUrl}/dish/${payload.id}`, {
+  method: 'DELETE',
+  headers: {
+    Accept: 'application/json',
+    Authorization: `Bearer ${token}`
+  },
 });
 
 export default {
   createDish,
   getDishes,
   addIngredientsToDish,
+  deleteDish
 }

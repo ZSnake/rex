@@ -44,10 +44,26 @@ const ingredients = (state = initialState, action) => {
         loading: false,
         error
       }
+      case types.DELETE_INGREDIENT_REQUEST:
+      return {
+        ...state,
+        loading: true
+      }
+    case types.DELETE_INGREDIENT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        ingredients
+      }
+    case types.DELETE_INGREDIENT_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error
+      }
     default:
       return state;
   }
 }
 
 export default ingredients;
-

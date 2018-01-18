@@ -1,61 +1,61 @@
 import * as types from './types';
 
 const initialState = {
-  dishes: [],
+  addresses: [],
   error: '',
   loading: false,
-  dish: {},
+  address: {},
 };
 
-const dishes = (state = initialState, action) => {
-  const { type, dishes, dish, error } = action;
+const addresses = (state = initialState, action) => {
+  const { type, addresses, address, error } = action;
   switch(type){
-    case types.CREATE_DISH_REQUEST:
+    case types.CREATE_ADDRESS_REQUEST:
       return {
         ...state,
         loading: true
       }
-    case types.CREATE_DISH_SUCCESS:
+    case types.CREATE_ADDRESS_SUCCESS:
       return {
         ...state,
         loading: false,
-        dish
+        address
       }
-    case types.CREATE_DISH_FAILURE:
+    case types.CREATE_ADDRESS_FAILURE:
       return {
         ...state,
         loading: false,
         error
       }
-      case types.DELETE_DISH_REQUEST:
+      case types.DELETE_ADDRESS_REQUEST:
       return {
         ...state,
         loading: true
       }
-    case types.DELETE_DISH_SUCCESS:
+    case types.DELETE_ADDRESS_SUCCESS:
       return {
         ...state,
         loading: false,
-        dishes
+        addresses
       }
-    case types.DELETE_DISH_FAILURE:
+    case types.DELETE_ADDRESS_FAILURE:
       return {
         ...state,
         loading: false,
         error
       }
-    case types.GET_DISHES_REQUEST:
+    case types.GET_ADDRESSES_REQUEST:
       return {
         ...state,
         loading: true
       }
-    case types.GET_DISHES_SUCCESS:
+    case types.GET_ADDRESSES_SUCCESS:
       return {
         ...state,
         loading: false,
-        dishes
+        addresses
       }
-    case types.GET_DISHES_FAILURE:
+    case types.GET_ADDRESSES_FAILURE:
       return {
         ...state,
         loading: false,
@@ -66,4 +66,4 @@ const dishes = (state = initialState, action) => {
   }
 }
 
-export default dishes;
+export default addresses;

@@ -11,7 +11,8 @@ import { CreateIngredient } from './components/createIngredients';
 import { Ingredients } from './components/listIngredients';
 import { Dishes } from './components/listDishes';
 import { Menu } from './components/menu';
-import { Profile } from './components/profile';
+import { Addresses } from './components/listAddresses';
+import { CreateAddress } from './components/createAddresses';
 
 
 const routes = [{
@@ -24,14 +25,17 @@ const routes = [{
   path: '/createuser',
   component: CreateUser
 },{
-  path: '/profile',
-  component: Profile
+  path: '/addresses',
+  component: Addresses
 }, {
   path: '/createdish',
   component: CreateDish
 }, {
   path: '/createingredient',
   component: CreateIngredient
+}, {
+  path: '/createaddress',
+  component: CreateAddress
 }, {
   path: '/ingredients',
   component: Ingredients

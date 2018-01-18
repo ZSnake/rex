@@ -6,7 +6,11 @@ import dishesService from '../../services/dishes';
 
 require('./dishes.css');
 
-// const baseURL = '';
+const menuStyle = {
+  "marginTop": 20
+};
+
+const baseURL = 'https://thehealthkitchen.blob.core.windows.net/images';
 
 const getDishes = ({getDishesSuccess, getDishesFailure,
   getDishesRequest, user, history}) => {
@@ -24,7 +28,7 @@ const getDishes = ({getDishesSuccess, getDishesFailure,
 
 class Menu extends Component {
   componentDidMount = () => {
-    if(isEmpty(this.props.user) || this.props.user.type !== 'admin')
+    if(isEmpty(this.props.user))
       this.props.history.push('/');
     getDishes(this.props);
   };
@@ -34,14 +38,14 @@ class Menu extends Component {
       <div className="ui container ingredientsContainer-segment--white" id="main-container">
         <div className="row">
           <div className="center aligned">
-            <h1 className="center aligned">Menu</h1>
+            <h1 className="center aligned" style={menuStyle}>Menu</h1>
           </div>
         </div>
         <div className="ui grid centered" id="card-container">
           <div className="two column row ui cards">
             {this.props.dishes.map(dish => (
               <div className="ui card" key={dish.id}>
-                {/* <img src={`${baseURL}/${dish.name}`} class="ui image" /> */}
+                <img src={`${baseURL}/${dish.name}.jpg`} className="ui image" />
                 <div className="content">
                   <div className="header">{dish.name}</div>
                   <div className="description">{dish.description}</div>

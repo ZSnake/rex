@@ -1,5 +1,5 @@
-.ingredientsContainer {
-	&-segment {
+.CreateIngredientForm {
+	&-form, &-segment {
 		background-color: #273639 !important;
 		&--white {
 			color: #fff !important;
@@ -11,16 +11,6 @@
 	&-label {
 		color: #8ea9a9 !important;
 	}
-}
-.actionButton {
-  margin: 0 10px;
-  cursor: pointer;
-  cursor: hand;
-}
-
-.add-button-container{
-  padding: 10px;
-  margin: -10px 10px 10px 10px;
 }
 
 .ui.segment {
