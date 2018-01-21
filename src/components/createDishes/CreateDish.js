@@ -22,7 +22,7 @@ const saveDish = (ingredient, {createDishSuccess, createDishFailure,
 
 class CreateDish extends React.Component {
   render() {
-    let name, description;
+    let name, price, description;
     if(isEmpty(this.props.user)){
       return <Redirect to="/" />
     }
@@ -32,7 +32,7 @@ class CreateDish extends React.Component {
         <h2 className="ui white center aligned header CreateIngredientForm-form--white">Create
         </h2>
         <div className="ui form">
-          <div className="two fields">
+          <div className="three fields">
             <div className="field">
               <label className="CreateIngredientForm-label">
                 Name
@@ -40,6 +40,14 @@ class CreateDish extends React.Component {
               <input type="text" ref={node => {
                   name = node
                 }} placeholder="Enter Name"/>
+            </div>
+            <div className="field">
+              <label className="CreateIngredientForm-label">
+                Price
+              </label>
+              <input type="text" ref={node => {
+                  price = node
+                }} placeholder="Enter Price"/>
             </div>
             <div className="field">
               <label className="CreateIngredientForm-label">
@@ -52,6 +60,7 @@ class CreateDish extends React.Component {
           </div>
           <button className="ui fluid button" onClick={() => saveDish({
               name: name.value,
+              price: price.value,
               description: description.value
             }, this.props)}>Create Dish</button>
           <h4>{this.props.error}</h4>
