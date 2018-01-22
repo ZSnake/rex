@@ -24,7 +24,7 @@ const addIngredientsToDish = (token, payload) => fetch(`${baseUrl}/dish/ingredie
     Accept: 'application/json',
     Authorization: `Bearer ${token}`
   },
-  body: JSON.stringify(payload.ingredientsIds)
+  body: JSON.stringify(payload.ingredients)
 });
 
 const deleteDish = (token, payload) => fetch(`${baseUrl}/dish/${payload.id}`, {
@@ -34,6 +34,8 @@ const deleteDish = (token, payload) => fetch(`${baseUrl}/dish/${payload.id}`, {
     Authorization: `Bearer ${token}`
   },
 });
+
+
 
 export default {
   createDish,

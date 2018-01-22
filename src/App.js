@@ -13,6 +13,7 @@ import { Dishes } from './components/listDishes';
 import { Menu } from './components/menu';
 import { Addresses } from './components/listAddresses';
 import { CreateAddress } from './components/createAddresses';
+import { AddDishIngredients } from './components/addDishIngredients';
 
 
 const routes = [{
@@ -37,6 +38,9 @@ const routes = [{
   path: '/createaddress',
   component: CreateAddress
 }, {
+  path: '/adddishingredients',
+  component: AddDishIngredients
+},{
   path: '/ingredients',
   component: Ingredients
 }, {
