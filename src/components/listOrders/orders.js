@@ -35,8 +35,14 @@ const deleteTheOrder = (order, {deleteOrderSuccess, deleteOrderFailure,
 class Orders extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      orders: this.props.history.location.state.orders
+    if (this.props.history.location.state) {
+      this.state = {
+        orders: this.props.history.location.state.orders
+      }
+    }else {
+      this.state = {
+        orders: []
+      }
     }
   }
   componentDidMount = () => {
@@ -46,7 +52,6 @@ class Orders extends Component {
   };
 
   render = () => {
-    console.log(this.state.orders);
     return (
       <div className="row">
         <div className='ui raised very padded segment text ingredientsContainer-segment'>
