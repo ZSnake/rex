@@ -13,6 +13,8 @@ import { Dishes } from './components/listDishes';
 import { Menu } from './components/menu';
 import { Addresses } from './components/listAddresses';
 import { CreateAddress } from './components/createAddresses';
+import { Orders } from './components/listOrders';
+import { CreateOrder } from './components/createOrder';
 import { AddDishIngredients } from './components/addDishIngredients';
 
 
@@ -32,6 +34,9 @@ const routes = [{
   path: '/createdish',
   component: CreateDish
 }, {
+  path: '/createorder',
+  component: CreateOrder
+}, {
   path: '/createingredient',
   component: CreateIngredient
 }, {
@@ -46,6 +51,9 @@ const routes = [{
 }, {
   path: '/dishes',
   component: Dishes
+},{
+  path: '/orders',
+  component: Orders
 }, {
   path: '/menu',
   component: Menu,

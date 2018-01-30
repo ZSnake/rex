@@ -1,1 +1,1 @@
-export { default as Dishes } from './dishes';
+export { default as Orders } from './orders';

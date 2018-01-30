@@ -30,6 +30,9 @@ const Navbar = ({user, logout}) =>
         {!isEmpty(user) ?
         <Link className="item" to="/dishes">Dishes</Link> :
         ''}
+        {!isEmpty(user) ?
+        <Link className="item" to="/orders">Orders</Link> :
+        ''}
         {isEmpty(user) ?
         <Link className="item" to="/login">Login</Link> :
         <a className="item" onClick={e => {e.preventDefault(); logout()}}>Logout</a>}
